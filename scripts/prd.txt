@@ -1,0 +1,63 @@
+# Overview
+This document outlines the requirements for the initial phase of "Frontend Operator," a Next.js web application. The sole purpose of this initial phase is to establish the basic visual layout structure that will eventually host the VNC viewer and chat interface. This phase solves the problem of needing a foundational UI structure before implementing interactive components. It is for the developer building the application. The value is in creating the correctly proportioned layout containers as the first concrete step.
+
+# Core Features
+* **Left Panel Container:**
+    * *What:* A container element occupying approximately 25% of the screen width on the left side.
+    * *Why:* To serve as the designated area where the chat interface components (input, history) will be placed in later phases.
+    * *How:* Implemented using standard HTML (e.g., `<div>`) and CSS (Flexbox or Grid) within a Next.js component to control width and positioning. Initially contains placeholder text or styling.
+* **Right Panel Container:**
+    * *What:* A container element occupying approximately 75% of the screen width on the right side.
+    * *Why:* To serve as the designated area where the VNC viewer component will be integrated in a later phase.
+    * *How:* Implemented using standard HTML (e.g., `<div>`) and CSS (Flexbox or Grid) within a Next.js component to control width and positioning. Initially contains placeholder text or styling.
+
+# User Experience
+* **User Personas:**
+    * *Developer:* Verifying the initial layout structure.
+* **Key User Flows (This Phase):**
+    1.  Developer runs the Next.js application.
+    2.  Developer observes a static, two-panel layout in the browser: a narrower panel on the left (~25%) and a wider panel on the right (~75%).
+* **UI/UX Considerations:**
+    * The layout should be visually clear, demonstrating the intended space allocation.
+    * Placeholder content or background colors can be used to distinguish the two panels.
+    * Basic responsiveness might be considered (e.g., panels stacking vertically on very narrow screens), but is not strictly required for this initial phase.
+
+# Technical Architecture
+* **System Components:**
+    * *Frontend:* Next.js application.
+    * *UI Elements:* Basic HTML (`div`) and CSS (Flexbox/Grid for layout).
+* **Data Models:** None for this phase.
+* **APIs and Integrations:** None for this phase.
+* **Infrastructure Requirements:**
+    * Node.js environment for Next.js development.
+
+# Development Roadmap
+* **Phase 1: Basic Layout Implementation (Current Scope)**
+    * **1.1: Setup Next.js Project:** Initialize a new Next.js application if not already done.
+    * **1.2: Implement Main Layout Component:** Create a top-level React component (e.g., `Layout.tsx`).
+    * **1.3: Create Panel Components:** Create two simple React components (e.g., `LeftPanel.tsx`, `RightPanel.tsx`) representing the two areas. Include basic placeholder content (e.g., "Chat Area", "VNC Area").
+    * **1.4: Apply CSS Styling:** Use CSS (e.g., CSS Modules, Tailwind, styled-components) within the `Layout.tsx` or panel components to achieve the desired two-column layout (approx. 25% left, 75% right). Flexbox or CSS Grid are suitable for this.
+    * **1.5: Integrate Panels:** Render the `LeftPanel` and `RightPanel` components within the `Layout` component.
+* **Future Enhancements (Out of Scope for this PRD):**
+    * Integrate VNC client library into the Right Panel.
+    * Implement Chat Input and Chat History components in the Left Panel.
+    * Connect Chat to backend API.
+    * Connect VNC viewer to VNC server.
+    * Implement user interaction forwarding for VNC.
+
+# Logical Dependency Chain
+1.  **Setup Next.js Project (1.1):** Foundational step.
+2.  **Implement Main Layout Component (1.2):** Container for the panels.
+3.  **Create Panel Components (1.3):** Define the content areas. Can be done in parallel with 1.2 after project setup.
+4.  **Apply CSS Styling (1.4):** Defines the visual structure. Depends on 1.2 and 1.3.
+5.  **Integrate Panels (1.5):** Places the panels within the styled layout. Depends on 1.2, 1.3, and 1.4. *-> MVP Layout Achieved.*
+
+# Risks and Mitigations
+* **Risk:** CSS layout implementation proves unexpectedly complex (e.g., handling edge cases, browser compatibility).
+    * **Mitigation:** Use standard, well-supported CSS techniques (Flexbox/Grid). Test on target browsers early. Keep the styling simple for this phase.
+* **Risk:** Chosen layout method makes future component integration difficult.
+    * **Mitigation:** Stick to standard layout patterns. Ensure panel components are simple containers that don't impose restrictions on future content.
+
+# Appendix
+* **Key Dependencies:** Next.js, React.
+* **Visual Target:** A simple two-column webpage layout. Left column takes ~25% width, right column takes ~75% width.

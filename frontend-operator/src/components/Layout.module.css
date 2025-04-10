@@ -1,0 +1,52 @@
+:root {
+  --left-panel-width: 25%;
+  --right-panel-width: 75%;
+  --transition-duration: 0.3s;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  flex-direction: row;
+  transition: all var(--transition-duration) ease;
+}
+
+.leftPanel {
+  width: var(--left-panel-width);
+  height: 100%;
+  transition: width var(--transition-duration) ease, height var(--transition-duration) ease;
+}
+
+.rightPanel {
+  width: var(--right-panel-width);
+  height: 100%;
+  transition: width var(--transition-duration) ease, height var(--transition-duration) ease;
+}
+
+/* Media query for screens smaller than 768px */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .leftPanel {
+    width: 100%;
+    height: 40vh; /* Take 40% of viewport height when stacked */
+  }
+
+  .rightPanel {
+    width: 100%;
+    height: 60vh; /* Take 60% of viewport height when stacked */
+  }
+}
+
+/* Safari-specific fix for transitions */
+@media not all and (min-resolution:.001dpcm) {
+  @supports (-webkit-appearance:none) {
+    .container, .leftPanel, .rightPanel {
+      transition-duration: 0.25s; /* Slightly faster transitions in Safari */
+    }
+  }
+} 
